@@ -1,0 +1,27 @@
+Team Members: Lucy Weems, Gigi Fortner
+
+Examining the Relationship between carbon emissions and climate events
+
+Our dataset looks at variables such as economic impact, carbon emissions, country and region.
+
+Question:
+Are countries with the highest carbon emissions affected by climate events, or is the relationship inversely proportional?
+
+URLs:
+Global Economic Indicators:
+https://www.kaggle.com/datasets/tanishksharma9905/global-economic-indicators-20102025
+Global Climate Events and Economic Impact:
+https://www.kaggle.com/datasets/uom190346a/global-climate-events-and-economic-impact-dataset?select=global_climate_events_economic_impact_2020_2025.csv
+Emissions by Country:
+https://www.kaggle.com/datasets/thedevastator/global-fossil-co2-emissions-by-country-2002-2022
+
+More questions:
+1. How are countries economically impacted by climate events, as countries and as regions?
+2. Have carbon emissions continued to grow annually or plateaued?
+3. What is the relationship between emissions and economic strength?
+4. What are further factors we can research to find more relationships?
+5. With countries that experience frequent climate events, is the economic impact of those events constant or does it grow?
+6. Is the frequency of climate events growing over time?
+
+We will divide the work by splitting up our original questions and creating SQL statements to examine those. 
+We will meet regularly to decide on our next actions, and use github to see updates on our work.
