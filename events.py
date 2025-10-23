@@ -19,4 +19,4 @@ def events_impact(df, events_impact):
         'impact_per_capita': 'INT'
     }
 
-create = f"CREATE TAVLE {events_impact} (\n"
+create = f"CREATE TABLE {events_impact} (\n"
