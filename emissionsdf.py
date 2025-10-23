@@ -12,6 +12,6 @@ df = df.dropna(how='any', axis=0, subset=['Country','Total', 'Coal', 'Oil', 'Gas
 #note, still has NaN values
 
 df = df[['Country','Year','Total', 'Coal', 'Oil', 'Gas']]
-print(df.tail())
+print(df.head())
 
 
