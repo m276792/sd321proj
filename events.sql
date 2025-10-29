@@ -5,4 +5,4 @@ CREATE TABLE events_impact(
     economic_impact_million_usd INT,
     international_aid_million_usd INT,
     impact_per_capita INT
-);k
+);
