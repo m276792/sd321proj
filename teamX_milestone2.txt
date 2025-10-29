@@ -1,0 +1,40 @@
+Table 1: 
+## Entity: 
+Events 
+## Attributes: 
+EventType (Primary Key)
+Country (Foreign Key)
+Year
+EconomicImpact 
+InternationalAid
+ImpactPerCapita 
+
+Table 2: 
+## Entity: 
+WorldBank 
+## Attributes: 
+CountryName (Primary Key)
+Year 
+Inflation 
+GDP 
+GDPperCapita 
+Unemployment 
+GDPGrowth
+
+Table 3: 
+## Entity: 
+Emissions 
+## Attributes: 
+Total (Primary Key)
+Country 
+Year 
+Coal 
+Oil 
+Gas 
+
+Relationships: 
+-An event occurs in many countries. 
+-A country may have zer or many events occur. 
+
+-A country has many emmisions 
+-Emissions come from many countries 
