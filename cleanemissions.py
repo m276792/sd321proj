@@ -1,6 +1,6 @@
 import csv
 
-csv_file = "emissions.csv"     # your CSV file name
+csv_file = "emissions.csv"     
 table_name = "Emissions"
 columns = ["Country", "Year", "total", "oil", "gas", "coal"]
 

@@ -1,9 +1,9 @@
 import csv
 
-csv_file = "world_bank_data_2025.csv"   # your CSV file name
+csv_file = "world_bank_data_2025.csv"   
 table_name = "WorldBankData"
 
-# Columns to keep — mapping CSV headers to SQL-friendly column names
+# Columns to keep 
 column_map = {
     "country_name": "Country",
     "year": "Year",
