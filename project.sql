@@ -36,7 +36,7 @@ CREATE TABLE Events(
 
 
 LOAD DATA INFILE 'global_climate_events_economic_impact_2020_2025.csv'
-INTO TABLE Events_Impact
+INTO TABLE Events
 FIELDS TERMINATED BY ',' /*column seperator*/
 ENCLOSED BY '"' /*if fields have quotes*/
 LINES TERMINATED BY '\n' /*line seperator*/

@@ -11,6 +11,5 @@ events_df.to.sql('Events', con=db, if_exists='replace', index=False)
 emissions_df = clean_emissions()
 emissions_df.to.sql('Emissions', con=db, if_exists='replace', index=False)
 
-
 worldbank_df = clean_worldbank()
 worldbank_df.to.sql('WorldBank', con=db, if_exists='replace', index=False)
