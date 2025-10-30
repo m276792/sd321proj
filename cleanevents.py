@@ -1,7 +1,7 @@
 import csv
 
 csv_file = "global_climate_events_economic_impact_2020_2025.csv"
-table_name = "GlobalImpactEvents"
+table_name = "Events"
 
 # Columns to keep — mapping CSV headers to SQL-friendly names
 column_map = {
