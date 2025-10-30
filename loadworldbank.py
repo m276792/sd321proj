@@ -2,11 +2,11 @@
 
 # CHANGETHIS
 # Filename to read
-filename = 'global_climate_events_economic_impact_2020_2025.csv'
+filename = 'world_bank_data_2025.csv'
 
 # CHANGETHIS
 # Table to place data into
-tableName = 'Events'
+tableName = 'WorldBank'
 
 # auto generate table design
 design = {}
