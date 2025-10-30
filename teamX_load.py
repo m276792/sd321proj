@@ -1,7 +1,7 @@
 from events import clean_events
 from emissionsdf import clean_emissions
 from worldbankdf import clean_worldbank
-from MySQLdb import dbConnect
+from mydb import dbConnect
 
 db = dbConnect()
 
