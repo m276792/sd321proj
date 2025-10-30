@@ -8,6 +8,7 @@ Year
 EconomicImpact 
 InternationalAid
 ImpactPerCapita 
+BCNF: yes
 
 Table 2: 
 ## Entity: 
@@ -20,6 +21,7 @@ GDP
 GDPperCapita 
 Unemployment 
 GDPGrowth
+BCNF: yes - determinant - CountryName,Year are superkeys. 
 
 Table 3: 
 ## Entity: 
@@ -31,6 +33,21 @@ Year
 Coal 
 Oil 
 Gas 
+BCNF: No - Total is derived from Coal, Oil, and Gas
+
+To BCNF: 
+Emissions1
+Country
+Year
+Coal
+Oil
+Gas
+
+EmissionsTotal
+Coal
+Oil
+Gas
+Total
 
 Relationships: 
 -An event occurs in many countries. 
