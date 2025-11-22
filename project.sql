@@ -20,12 +20,12 @@ CREATE TABLE Events (
 
 DROP TABLE IF EXISTS Emissions ;
 CREATE TABLE Emissions (
-  "Country"              VARCHAR(20)   NOT NULL,
-  "Year"                 INT           NULL,
-  "Total"                VARCHAR(64)   NULL,
-  "Coal"                 VARCHAR(64)   NULL,
-  "Oil"                  VARCHAR(64)   NULL,
-  "Gas"                  VARCHAR(64)   NULL
+  Country            VARCHAR(20)   NOT NULL,
+  Year                 INT           NULL,
+  Total                VARCHAR(64)   NULL,
+  Coal                 VARCHAR(64)   NULL,
+  Oil                  VARCHAR(64)   NULL,
+  Gas                  VARCHAR(64)   NULL
 );
 
 
