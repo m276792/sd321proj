@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS Events ;
 CREATE TABLE Events (
   year                            INT           NULL,
   country                         VARCHAR(64)   NULL,
-  EventType                      VARCHAR(64)   NULL,
+  event_type                      VARCHAR(64)   NULL,
   EconomicImpact     VARCHAR(64)   NULL,
   InternationalAid   VARCHAR(64)   NULL,
   ImpactPerCapita               VARCHAR(64)   NULL

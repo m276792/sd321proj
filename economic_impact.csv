@@ -1,4 +1,4 @@
-event_id,date,year,month,country,event_type,severity,duration_days,affected_population,deaths,injuries,economic_impact_million_usd,infrastructure_damage_score,response_time_hours,international_aid_million_usd,latitude,longitude,total_casualties,impact_per_capita,aid_percentage
+event_id,date,year,month,country,EventType,severity,duration_days,affected_population,deaths,injuries,economic_impact_million_usd,infrastructure_damage_score,response_time_hours,international_aid_million_usd,latitude,longitude,total_casualties,impact_per_capita,aid_percentage
 EV01539,2020-01-01,2020,1,Japan,Tsunami,1,1,420956,0,2,0.01,4.9,11,0.0,85.4321,138.7206,2,0.02,0.0
 EV02303,2020-01-01,2020,1,Qatar,Hurricane,1,4,3276,1,10,0.0,3.4,5,0.0,-32.037,14.0111,11,0.0,0.0
 EV01796,2020-01-02,2020,1,Canada,Drought,3,6,120382,0,9,0.1,8.9,10,0.0,78.4213,-112.7556,9,0.83,0.0
