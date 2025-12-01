@@ -15,12 +15,17 @@ db.autocommit(True)
 query = """
 SELECT 
     w.Country,
-    CAST(w.GDP AS DECIMAL(15,2)) AS GDP,
-    CAST(e.Total AS DECIMAL(15,2)) AS Emissions
+    AVG(CAST(w.GDP AS DECIMAL(15,2))) AS GDP,
+    AVG(CAST(e.Total AS DECIMAL(15,2))) AS Emissions
 FROM WorldBank w
 JOIN Emissions e 
     ON w.Country = e.Country AND w.Year = e.Year
-WHERE w.GDP IS NOT NULL AND e.Total IS NOT NULL;
+WHERE w.GDP IS NOT NULL 
+  AND e.Total IS NOT NULL
+  AND w.Year IN (2019, 2020, 2021)
+GROUP BY w.Country
+ORDER BY GDP DESC
+LIMIT 150;
 """
 
 cursor = db.cursor()
@@ -30,7 +35,7 @@ rows = cursor.fetchall()
 df = pd.DataFrame(rows, columns=[col[0] for col in cursor.description])
 
 #create plot
-plt.figure(figsize=(100,100))
+plt.figure(figsize=(20,20))
 sns.scatterplot(data=df, x="GDP", y="Emissions", hue="Country")
 plt.title("GDP vs CO₂ Emissions")
 plt.xlabel("GDP")
