@@ -1,0 +1,206 @@
+teamX_milestone2.txt
+
+Relational Model
+
+1) Country
+----------------------------------------
+Columns:
+ - country_id (PK)
+ - country_name
+ - iso_code
+Keys:
+ - PK(country_id)
+Functional Dependencies:
+ country_id → country_name, iso_code
+BCNF:
+ ✅ Yes
+
+-------------------------------------------------------------
+
+2) EconomicIndicator
+(derived from work_bank_data)
+----------------------------------------
+Columns:
+ - country_id (FK → Country.country_id)
+ - year
+ - inflation_cpi_pct
+ - gdp_usd
+ - gdp_per_capita_usd
+ - unemployment_rate_pct
+ - interest_rate_real_pct
+ - inflation_gdp_deflator_pct
+ - gdp_growth_annual_pct
+ - current_account_balance_pct_gdp
+ - government_expense_pct_gdp
+ - government_revenue_pct_gdp
+ - tax_revenue_pct_gdp
+ - gross_national_income_usd
+ - public_debt_pct_gdp
+Keys:
+ - PK(country_id, year)
+Functional Dependencies:
+ (country_id, year) → all other attributes
+BCNF:
+ ✅ Yes
+
+-------------------------------------------------------------
+
+3) EconomicImpactEvent
+(derived from economic_impact.csv)
+----------------------------------------
+Columns:
+ - event_id (PK)
+ - date
+ - year
+ - month
+ - country_id (FK → Country.country_id)
+ - event_type
+ - severity
+ - duration_days
+ - affected_population
+ - deaths
+ - injuries
+ - total_casualties
+ - economic_impact_million_usd
+ - infrastructure_damage_score
+ - response_time_hours
+ - international_aid_million_usd
+ - latitude
+ - longitude
+Keys:
+ - PK(event_id)
+Functional Dependencies:
+ event_id → (date, year, month, country_id, event_type, severity, duration_days,
+              affected_population, deaths, injuries, total_casualties,
+              economic_impact_million_usd, infrastructure_damage_score,
+              response_time_hours, international_aid_million_usd, latitude, longitude)
+BCNF:
+ ✅ Yes
+
+(If event_id were not unique and the natural key were (country_id, date, event_type), decomposition would be needed:
+   Event(event_id, country_id, date, event_type)
+   EventDetails(event_id, severity, duration_days, ...))
+
+-------------------------------------------------------------
+
+4) Emission
+(derived from emissions.csv)
+----------------------------------------
+Columns:
+ - country_id (FK → Country.country_id)
+ - year
+ - total_emissions_mtco2
+ - coal_mtco2
+ - oil_mtco2
+ - gas_mtco2
+ - cement_mtco2
+ - flaring_mtco2
+ - other_mtco2
+ - per_capita_mtco2
+Keys:
+ - PK(country_id, year)
+Functional Dependencies:
+ (country_id, year) → total_emissions_mtco2, coal_mtco2, oil_mtco2, gas_mtco2, cement_mtco2,
+                      flaring_mtco2, other_mtco2, per_capita_mtco2
+BCNF:
+ ✅ Yes
+
+=============================================================
+FUNCTIONAL DEPENDENCY SUMMARY
+=============================================================
+- Country: country_id → country_name, iso_code
+- EconomicIndicator: (country_id, year) → all economic measures
+- EconomicImpactEvent: event_id → all event attributes
+- Emission: (country_id, year) → all emission measures
+
+=============================================================
+BCNF EVALUATION
+=============================================================
+All relations are in BCNF:
+ - Every non-trivial functional dependency has a superkey on the left-hand side.
+ - No partial or transitive dependencies exist.
+
+=============================================================
+ER MODEL DESCRIPTION
+=============================================================
+
+Entities:
+-----------
+• **Country**
+  - PK: country_id
+  - Attributes: country_name, iso_code
+
+• **EconomicIndicator**
+  - PK: (country_id, year)
+  - FK: country_id → Country
+  - Attributes: economic measures (GDP, inflation, unemployment, etc.)
+
+• **EconomicImpactEvent**
+  - PK: event_id
+  - FK: country_id → Country
+  - Attributes: date, event_type, severity, damages, aid, casualties
+
+• **Emission**
+  - PK: (country_id, year)
+  - FK: country_id → Country
+  - Attributes: total, coal, oil, gas, cement, flaring, other, per_capita emissions
+
+Relationships:
+---------------
+1. Country —< EconomicIndicator  (1:N)
+2. Country —< Emission           (1:N)
+3. Country —< EconomicImpactEvent (1:N)
+
+=============================================================
+ER DIAGRAM STRUCTURE (textual form)
+=============================================================
+
+       ┌──────────────────────────────┐
+       │          Country             │
+       │------------------------------│
+       │ country_id (PK)              │
+       │ country_name                 │
+       │ iso_code                     │
+       └─────────────┬────────────────┘
+                     │ 1
+                     │
+                     │*
+        ┌─────────────────────────────┐
+        │     EconomicIndicator        │
+        │------------------------------│
+        │ country_id (FK)              │
+        │ year                         │
+        │ GDP, Inflation, etc.         │
+        │ PK(country_id, year)         │
+        └──────────────────────────────┘
+
+        ┌─────────────────────────────┐
+        │          Emission            │
+        │------------------------------│
+        │ country_id (FK)              │
+        │ year                         │
+        │ total, coal, oil, ...        │
+        │ PK(country_id, year)         │
+        └──────────────────────────────┘
+
+        ┌─────────────────────────────┐
+        │     EconomicImpactEvent      │
+        │------------------------------│
+        │ event_id (PK)                │
+        │ country_id (FK)              │
+        │ date, event_type, severity   │
+        │ damages, casualties, aid     │
+        └──────────────────────────────┘
+
+=============================================================
+NOTES
+=============================================================
+- Using **country_id** (or ISO code) as the linking key ensures dataset integration.
+- The “EconomicIndicator” and “Emission” tables are **time-series** per country-year.
+- “EconomicImpactEvent” captures discrete events, typically multiple per year per country.
+- Each dataset maps naturally:
+   - work_bank_data → EconomicIndicator
+   - emissions → Emission
+   - economic_impact → EconomicImpactEvent
+- All are normalized to BCNF to prevent redundancy and update anomalies.
+
