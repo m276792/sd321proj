@@ -32,7 +32,6 @@ LIMIT 16;
 "
 
 
-
 df <- dbGetQuery(db, query)
 
 df_long <- df %>%
@@ -54,38 +53,7 @@ ggplot(df_long, aes(x = Year, y = Value, fill = Indicator)) +
 ggsave("R_country_indicators_barplot.png", dpi = 300, width = 12, height = 6)
 
 
-
-
-db <- dbConnect(RMariaDB::MariaDB(),
-    user     = user,
-    password = password,
-    host     = host,
-    dbname   = database)
-
-query <- "
-SELECT Country, Year, 
-CAST(GDP AS DECIMAL(17,2)) AS GDP
-FROM WorldBank
-WHERE Year = '2019'
-AND GDP IS NOT NULL
-ORDER BY GDP DESC
-LIMIT 16;
-"
-
-df <- dbGetQuery(db, query)
-
-# pie chart
-ggplot(df, aes(x = "", y = GDP, fill = Country)) +
-  geom_col(width = 1) +
-  coord_polar(theta = "y") +
-  theme_void() +
-  ggtitle("GDP Distribution (2019)") +
-  theme(plot.title = element_text(hjust = 0.5))
-
-ggsave("R_GDP_PieChart_2019.png", dpi = 300, width = 8, height = 8)
-
-
-
+#####Graph2
 db <- dbConnect(RMariaDB::MariaDB(),
     user     = user,
     password = password,
@@ -113,7 +81,7 @@ WHERE e.Year IN (2019, 2020, 2021)
   AND ev.event_type IN ('Drought','Heatwave','Wildfire','Cold Wave','Flood','Landslide')
 
 GROUP BY e.Country
-ORDER BY event_count DESC
+ORDER BY avg_total_emissions DESC
 LIMIT 16;
 "
 
@@ -137,6 +105,7 @@ ggplot(df_long, aes(x = Country, y = Value, fill = Metric)) +
   theme(plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("R_emissions_vs_impact_per_country.png",
+ggsave("R_graph1.png",
        dpi = 300, width = 12, height = 6)
+
 

@@ -34,13 +34,14 @@ cursor.execute(query)
 rows = cursor.fetchall()
 
 df = pd.DataFrame(rows, columns=[col[0] for col in cursor.description])
-
+palette = sns.color_palette("tab20", n_colors=len(df["Country"].unique()))
 #create plot
 plt.figure(figsize=(15,8))
-sns.scatterplot(data=df, x="GDP", y="Emissions", hue="Country")
+sns.scatterplot(data=df, x="GDP", y="Emissions", hue="Country", palette=palette)
 plt.title("GDP vs CO₂ Emissions")
 plt.xlabel("GDP")
 plt.ylabel("Total Emissions")
+plt.legend(bbox_to_anchor=(1.05,1),loc=2,borderaxespad=0.)
 plt.tight_layout()
 plt.savefig("pt4.png")
 
