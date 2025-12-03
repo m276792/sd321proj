@@ -110,6 +110,7 @@ LEFT JOIN Events ev
 
 WHERE e.Year IN (2019, 2020, 2021)
   AND e.Country <> 'Global'
+  AND ev.event_type IN ('Drought','Heatwave','Wildfire','Cold Wave','Flood','Landslide')
 
 GROUP BY e.Country
 ORDER BY event_count DESC

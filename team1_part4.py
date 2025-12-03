@@ -109,7 +109,7 @@ SELECT
     AVG(CAST(EconomicImpact AS DECIMAL(18,2))) AS avg_impact, /* average impact of each event */
     SUM(CAST(EconomicImpact AS DECIMAL(18,2))) AS total_impact /* total impact on country*/
 FROM Events
-WHERE Year IN ('2019','2020','2021')
+WHERE Year IN ('2019','2020','2021') AND event_type IN ('Drought','Heatwave','Wildfire','Cold Wave','Flood','Landslide')
 GROUP BY Country
 ORDER BY event_count DESC
 LIMIT 30
