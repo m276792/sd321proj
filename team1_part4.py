@@ -116,7 +116,7 @@ ORDER BY event_count DESC
 LIMIT 30
 ;
 """
-#this query averages 
+
 
 cursor = db.cursor()
 cursor.execute(query)
@@ -124,7 +124,7 @@ rows = cursor.fetchall()
 
 df = pd.DataFrame(rows, columns=[col[0] for col in cursor.description])
 
-#create plot
+
 plt.figure(figsize=(15,8))
 
 x = np.arange(len(df["Country"]))
