@@ -15,7 +15,6 @@ LEFT JOIN WorldBank w
 
 
 
-/* THIS QUERY produces a summary table of natural disaster activity per country per year */
 
 SELECT 
     Country, 
